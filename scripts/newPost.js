@@ -8,7 +8,11 @@ async function addPost(post) {
      */
 
     // Your code here
+    let posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.unshift(post);
+    localStorage.setItem('posts', JSON.stringify(posts));
 }
+
 
 
 document.querySelector('#new-post').addEventListener('submit', (e) => {
@@ -17,4 +21,5 @@ document.querySelector('#new-post').addEventListener('submit', (e) => {
     const body = e.target.body.value;
     addPost({title, body});
     e.target.reset();
+    
 });
